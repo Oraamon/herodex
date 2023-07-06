@@ -1,38 +1,266 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "Benton Sans";
+  src: url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-1.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Benton Sans";
+  src: url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/19319132-31a6-45e2-85a5-6dacae897490-1.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Benton Sans";
+  src: url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-3.woff") format("woff"), url("https://assets.staticlp.com/javascripts/743d3d3a-da58-48d2-a5c3-bd7994650e23-1.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 600;
+  font-display: swap;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #0F1316;
+  
+  font-size: 64px;
+  padding: 1em 10px
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.marvel{
+color: #FFF;
+position: absolute;
+font-size: 35px;
+font-family: "Benton Sans Ex Comp Bla", sans-serif; 
+font-weight: 550;
+letter-spacing: -3px;
+background: #F00;
+padding: 2px 5px;
+padding-right: 8px;
+flex-shrink: 0;
+bottom: 43px;
+left: 51px;
+}
+.Hero{
+position: absolute;
+width: 1396px;
+height: 417px;
+flex-shrink: 0;
+background-color: #FFF;
+left: 262px;
+top: 105px;
+}
+.Series{
+  position: absolute;
+  width: 688px;
+height: 198px;
+flex-shrink: 0;
+  flex-shrink: 0;
+  background-color: #FFF;
+  left: 970px;
+  top: 558px;
+}
+.Stories{
+  position: absolute;
+  width: 687px;
+  height: 417px;
+  flex-shrink: 0;
+  background-color: #FFF;
+  left: 262px;
+  top: 558px;
   }
-}
+  .Random{
+    position: absolute;
+    width: 688px;
+height: 198px;
+flex-shrink: 0;
+    flex-shrink: 0;
+    background-color: #FFF;
+    left: 970px;
+    top: 777px;
+    }
+    .big-box{
+      position: relative;
+       margin:10px 0px;
+      background: #F8F6F0;
+      vertical-align: top;
+      width: 687px;
+      height: 417px;
+      display: inline-block;
+      background-image: radial-gradient(
+        circle at center,
+        black 0.05rem,
+        transparent 0
+      );
+      background-size: 1rem 1rem;
+      background-repeat: round;
+      border-color: #0F1316;
+      border-width: 3px;
+      border-style: solid;
+    }
+    .big-box:hover{
+      position: relative;
+       margin:10px 0px;
+       background-image: radial-gradient(
+        circle at center,
+        black 0.05rem,
+        transparent 0
+      );
+      background-size: 1rem 1rem;
+      background-repeat: round;
+      vertical-align: top;
+      width: 687px;
+      height: 417px;
+      display: inline-block;
+      animation: pulse 0.7s infinite;
+      animation-direction: alternate;
+      -webkit-animation-name: pulse;
+      animation-name: pulse;
+      z-index: 4;
+    }
+    .big-box:active{
+      animation: allscreen 2s infinite;
+      -webkit-animation-name: allscreen;
+      animation-name: allscreen;
+      
+      z-index: 4;
+    }
+    .banner-box{
+      position: relative;
+      background: #F8F6F0;
+      width: 1396px;
+      height: 417px;
+      display: block;
+      background-image: radial-gradient(
+        circle at center,
+        black 0.06rem,
+        transparent 0
+      );
+      background-size: 1rem 1rem;
+      background-repeat: round;
+      border-color: #0F1316;
+      border-width: 3px;
+      border-style: solid;
+      transition: transform 4s;
+    }
+    
+    .banner-box:hover{
+      position: relative;
+      width: 1396px;
+      height: 417px;
+      display: block;
+      animation: pulse 0.7s infinite;
+      animation-direction: alternate;
+      -webkit-animation-name: pulse;
+      animation-name: pulse;
+      z-index: 4;
+    }
+    .active {
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+    z-index: 4;
+      transform: scale(5);
+    }
+    
+    @-webkit-keyframes pulse {
+      0% {
+        -webkit-transform: scale(1);
 
-.App-link {
-  color: #61dafb;
-}
+      }
+      100% {
+        -webkit-transform: scale(1.05);
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+
+      }
+      100% {
+        transform: scale(1.05);
+
+        
+      }
+    }
+
+    @-webkit-keyframes allscreen {
+      100% {
+        -webkit-transform: scale(5);
+
+      }
+    }
+    
+    @keyframes allscreen {
+      100% {
+        transform: scale(5);
+
+      }
+    }
+    .box{
+      position: relative;
+      background: #F8F6F0;
+      margin:10px;
+      width: 700px;
+      height: 200px;  
+      display:block;
+      background-image: radial-gradient(
+        circle at center,
+        black 0.05rem,
+        transparent 0
+      );
+      background-size: 1rem 1rem;
+      background-repeat: round;
+      border-color: #0F1316;
+      border-width: 3px;
+      border-style: solid;
+      
+    }
+    .box:hover{
+      position: relative;
+
+      margin:10px;
+      width: 700px;
+      height: 203px;  
+      display:block;
+      animation: pulse 0.7s infinite;
+      animation-direction: alternate;
+      -webkit-animation-name: pulse;
+      animation-name: pulse;
+      z-index: 4;
+    }
+    .side{
+      display: inline-block;
+    }
+    .content{
+      font-family: 'Bebas Neue', sans-serif;
+    margin-left: 256px;
+    }
+    .hero{
+      background-color: white;
+      width: 205px;
+      margin: 5px;
+      min-height:205px;
+      max-height: 305px;
+      display: inline-block;
+      overflow: hidden;
+      border-style: solid;
+  border-color: white;
+
+    }
+    .hero-img img{
+      display: inline-block;
+      height: 205px;
+      width: 205px;
+
+      z-index: 1;
+    }
+    .heroes-container{
+      margin: auto;
+      width: 1000px;
+    }
+    
+    
