@@ -2,13 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Heroes(){
+function Comics(){
     const [img,setimg] = useState("")
     const [Content,setContent] = useState([])
     const navigate = useNavigate();
     
     function handleHeroClick(key) {
-      navigate("/heroes/"+key);
+      navigate("/comics/"+key);
     }
 
 
@@ -17,7 +17,7 @@ function Heroes(){
     }, []);
   
     function fetchWelcomeContent() {
-      axios.get('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3')
+      axios.get('http://gateway.marvel.com/v1/public/comics?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3')
   .then(response => {
     // Manipule a resposta aqui
     console.log(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension);
@@ -25,7 +25,7 @@ function Heroes(){
     const dobro =[];
   
     response.data.data.results.forEach(element => {
-      Content.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.name}</div></div>);
+      Content.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.title}</div></div>);
 
     });
     setContent(Content);
@@ -38,13 +38,11 @@ function Heroes(){
     }
 
     return(
-      <div className='page'>
         <div className="heroes-container">
             <ul>
                 {Content}
             </ul>
         </div>
-      </div>
     )
 }
-export default Heroes
+export default Comics
