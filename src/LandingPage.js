@@ -48,20 +48,20 @@ function  LandingPage() {
     <div className='body'>
       <div className='page'>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
-    <div class="content">
-    <div class={`${ optionsVisible ? 'active' : 'banner-box'}`} onClick={handleHeroesClick} >
+    <div className="content">
+    <div className={`${ optionsVisible ? 'active' : 'banner-box'}`} onClick={handleHeroesClick} >
   <a>HEROES</a></div>
-    <div class="big-box" onClick={comics}>
-  <a>STORIES</a></div><div class="side"><div class="box" onClick={series}>
+    <div className="big-box" onClick={comics}>
+  <a>STORIES</a></div><div className="side"><div className="box" onClick={series}>
    <a>SERIES</a></div>
-    <div class="box" onClick={random}>
+    <div className="box" onClick={random}>
    <a>RANDOM</a></div>
    </div>
    </div>       
       </div> 
-   <a class="marvel">MARVEL</a>
+   <a className="marvel">MARVEL</a>
     </div>
   );
 }

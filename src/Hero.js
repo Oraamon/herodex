@@ -19,7 +19,7 @@ function Hero(){
     const dobro =[];
   
     response.data.data.results.forEach(element => {
-      dobro.push(<div className="hero" key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.name}</div></div>);
+      dobro.push(<div className="hero-article" key={element.id}><div className="hero-article-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{"NAME: "+element.name}<br/><div className="description">{"DESCRIPTION: "+ element.description }</div></div></div>);
 
     });
     setimag(dobro);
@@ -32,11 +32,14 @@ function Hero(){
     }
 
     return(
-        <div className="hero">
-            <div className="hero-img"></div>
+      <div className="page">
+        <div className="hero-article">
+            <div className="hero-article-img"></div>
             <div className="hero-info"></div>
             {imag}
         </div>
+      </div>
+        
     )
 }
 export default Hero
