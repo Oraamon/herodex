@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function Heroes(){
+function Series(){
     const [img,setimg] = useState("")
     const [Content,setContent] = useState([])
     const navigate = useNavigate();
@@ -108,4 +108,4 @@ function Heroes(){
 
     )
 }
-export default Heroes
+export default Series
