@@ -11,6 +11,8 @@ function Comics(){
     const [Content,setContent] = useState([])
     const navigate = useNavigate();
     var offset = 0;
+
+
     
     function handleHeroClick(key) {
       navigate("/comics/"+key);
@@ -21,19 +23,33 @@ function Comics(){
         window.innerHeight + e.target.documentElement.scrollTop + 1 >=
         e.target.documentElement.scrollHeight
       ){
+        const params = new URLSearchParams(window.location.search);
+      const txtValue = params.get('txt');
         offset += 1;
-        LoadMore(offset*20)
+        if(txtValue != null){
+          LoadMore2(txtValue,offset*20);
+        }
+        else LoadMore(offset*20);
       }
       
     }
 
     useEffect(() => {
-      fetchWelcomeContent();
+      
+      const params = new URLSearchParams(window.location.search);
+      const txtValue = params.get('txt');
+      console.log(txtValue);
+      if(txtValue != null){
+        fetchWelcomeContent2(txtValue);
+      }
+      else{
+        fetchWelcomeContent();
+      } 
       window.addEventListener("scroll",handleScroll);
     }, []);
   
-    function fetchWelcomeContent() {
-      axios.get('http://gateway.marvel.com/v1/public/comics?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3')
+    function fetchWelcomeContent2(txtValue) {
+      axios.get(`http://gateway.marvel.com/v1/public/comics?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3&titleStartsWith=${txtValue}`)
   .then(response => {
     // Manipule a resposta aqui
     console.log(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension);
@@ -45,6 +61,26 @@ function Comics(){
 
     });
     setContent(Content);
+
+  })
+  .catch(error => {
+    // Manipule os erros aqui
+    console.error(error);
+  });
+    }
+    function fetchWelcomeContent() {
+      axios.get(`http://gateway.marvel.com/v1/public/comics?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3`)
+  .then(response => {
+    // Manipule a resposta aqui
+    console.log(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension);
+    setimg(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension )
+    const dobro =Content;
+  
+    response.data.data.results.forEach(element => {
+      dobro.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.title}</div></div>);
+
+    });
+    setContent(dobro);
     console.log(Content );
   })
   .catch(error => {
@@ -58,10 +94,33 @@ function Comics(){
     // Manipule a resposta aqui
     console.log(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension);
     setimg(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension )
-    const dobro =[];
+    const dobro = Content;
   
     response.data.data.results.forEach(element => {
-      Content.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.title}</div></div>);
+      dobro.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.title}</div></div>);
+
+    });
+    setContent(dobro);
+    console.log(Content );
+  })
+  .catch(error => {
+    // Manipule os erros aqui
+    console.error(error);
+  });
+    }
+    function LoadMore2(name,offset) {
+      axios.get(`http://gateway.marvel.com/v1/public/comics?ts=1&apikey=dcac4f8bc22f3164a313a4cf94d6ef57&hash=ccbc44ef33d6c777371e43d559225cc3&offset=${offset}&titleStartsWith=${name}`)
+  .then(response => {
+    // Manipule a resposta aqui
+    console.log(response.data.data.results);
+ 
+    const dobro = Content;
+  
+    response.data.data.results.forEach(element => {
+      if(response.data.data.results[0].thumbnail.path +"."+response.data.data.results[0].thumbnail.extension != undefined){
+        Content.push(<div className="hero" onClick={() =>handleHeroClick(element.id)} key={element.id}><div className="hero-img"><img src={element.thumbnail.path +"."+element.thumbnail.extension}></img>{element.title}</div></div>);
+      }
+     
 
     });
     setContent(Content);
